@@ -2,7 +2,7 @@ import { useState } from "react";
 import UserMenu from "./userMenu";
 
 export default function UserIcon() {
-    const [menuIsOpen, setMenuIsOpen] = useState<boolean>(true);
+    const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
     return (
         <div className="flex flex-col items-center justify-center">

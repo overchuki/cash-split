@@ -2,6 +2,7 @@ import Footer from "./components/footer";
 import Nav from "./components/nav";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <div className="flex flex-col items-center justify-start min-w-full">
                         <Nav />
                         {children}
+                        <Analytics />
                     </div>
                     <Footer />
                 </main>
