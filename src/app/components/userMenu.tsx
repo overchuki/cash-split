@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface props {
     popupClassName: string;
@@ -10,12 +10,16 @@ interface props {
 }
 
 export default function UserMenu({ popupClassName, menuIsOpen, setMenuIsOpen }: props) {
-    window.addEventListener("click", (e) => {
+    const globalClickHandler = (e: MouseEvent) => {
         const target = e.target as HTMLDivElement | HTMLLinkElement;
-        if (!target.classList.contains(popupClassName) && menuIsOpen) {
+        if (!target.classList.contains(popupClassName)) {
             setMenuIsOpen(false);
         }
-    });
+    };
+
+    useEffect(() => {
+        window.addEventListener("click", globalClickHandler);
+    }, []);
 
     return (
         <div className="relative">
