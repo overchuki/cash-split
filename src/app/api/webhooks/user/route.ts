@@ -1,9 +1,8 @@
 import type { WebhookEvent, UserJSON } from "@clerk/clerk-sdk-node";
 import { Webhook, WebhookRequiredHeaders } from "svix";
 import { getErrorResponse } from "@/app/utils/general";
-import { NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     const body = (await request.json()) as WebhookEvent;
     console.log(body);
 
@@ -14,7 +13,7 @@ export async function POST(request: NextRequest) {
         "svix-signature": request.headers.get("svix-signature") ?? "invalid_signature",
     };
     console.log("payload: " + payload);
-    console.log("headers: " + headers);
+    console.log("headers: " + JSON.stringify(headers));
 
     const secret = process.env.SVIX_SECRET;
     if (secret === undefined) {
@@ -27,7 +26,7 @@ export async function POST(request: NextRequest) {
     } catch (err) {
         return getErrorResponse(403, "Request is invalid");
     }
-    console.log("msg: " + msg);
+    console.log("msg: " + JSON.stringify(msg));
 
     switch (body.type) {
         case "user.created":
