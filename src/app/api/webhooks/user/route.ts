@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
                 break;
         }
     } catch (err) {
+        console.log(JSON.stringify(err));
         return NextResponse.json({ message: "Webhook received, error processing" }, { status: 500 });
     }
 
