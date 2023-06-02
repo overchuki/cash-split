@@ -11,7 +11,7 @@
     "dependencies": {
         "@clerk/nextjs": "^4.19.0",
         "@clerk/themes": "^1.7.4",
-        "@prisma/client": "^4.14.1",
+        "@prisma/client": "^4.15.0",
         "@types/node": "20.2.5",
         "@types/react": "18.2.7",
         "@types/react-dom": "18.2.4",
@@ -30,6 +30,6 @@
     },
     "devDependencies": {
         "prettier-plugin-prisma": "^4.13.0",
-        "prisma": "^4.14.1"
+        "prisma": "^4.15.0"
     }
 }
