@@ -21,19 +21,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 baseTheme: dark,
                 elements: {
                     card: "bg-black border-2 rounded-4 border-sky-950",
-                    footerActionLink: "text-sky-400 hover:text-sky-400",
+                    footerActionLink: "text-rose-600 hover:text-rose-600",
                     formButtonPrimary: "bg-rose-800 hover:bg-rose-900",
                     userButtonPopoverCard: "bg-zinc-950",
                 },
                 variables: {
-                    colorPrimary: "#082f49",
+                    colorPrimary: "#38bdf8",
                 },
             }}
         >
             <html lang="en">
                 <body className={inter.className}>
                     <main className="flex min-h-screen flex-col items-center justify-between px-4 md:px-24 lg:px-48 xl:px-64 2xl:px-96 py-1">
-                        <div className="flex flex-col flex-grow items-center justify-start min-w-full">
+                        <div className="flex flex-col flex-grow items-center justify-start w-full max-w-full">
                             <Nav />
                             {children}
                             <Analytics />

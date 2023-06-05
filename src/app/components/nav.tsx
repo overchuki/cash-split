@@ -40,6 +40,8 @@ export default function Nav() {
             <SignedIn>
                 <UserButton
                     afterSignOutUrl="/"
+                    userProfileUrl="/account"
+                    userProfileMode="navigation"
                     appearance={{
                         elements: {
                             rootBox: "flex justify-center items-center ml-4",
