@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     card: "bg-black border-2 rounded-4 border-sky-950",
                     footerActionLink: "text-sky-400 hover:text-sky-400",
                     formButtonPrimary: "bg-rose-800 hover:bg-rose-900",
+                    userButtonPopoverCard: "bg-zinc-950",
                 },
                 variables: {
                     colorPrimary: "#082f49",

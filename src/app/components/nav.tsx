@@ -39,6 +39,7 @@ export default function Nav() {
             </div>
             <SignedIn>
                 <UserButton
+                    afterSignOutUrl="/"
                     appearance={{
                         elements: {
                             rootBox: "flex justify-center items-center ml-4",
