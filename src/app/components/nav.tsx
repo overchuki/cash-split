@@ -6,7 +6,8 @@ import Image from "next/image";
 import logo from "../../../public/logo-no-background.png";
 import logoIcon from "../../../public/logo-icon.png";
 import { usePathname } from "next/navigation";
-import { UserButton, SignedIn, SignedOut, SignInButton, ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
+import { UserButton, SignedIn, SignedOut, SignInButton, ClerkLoading, ClerkLoaded, SignUpButton } from "@clerk/nextjs";
+import Loader from "./loader";
 
 export default function Nav() {
     const activeClass: string =
@@ -49,12 +50,25 @@ export default function Nav() {
             </SignedIn>
             <SignedOut>
                 <ClerkLoading>
-                    <div>Clerk is loading...</div>
+                    <Loader />
                 </ClerkLoading>
                 <ClerkLoaded>
-                    <SignInButton mode="redirect">
-                        <button className="btn">Sign Up</button>
-                    </SignInButton>
+                    <div className="flex space-x-4">
+                        <div className="hidden sm:flex items-center">
+                            <SignUpButton mode="redirect">
+                                <button className="btn font-mono text-sm hover:text-sky-600 whitespace-nowrap">
+                                    Sign Up
+                                </button>
+                            </SignUpButton>
+                        </div>
+                        <div className="flex items-center">
+                            <SignInButton mode="redirect">
+                                <button className="btn font-mono text-sm border border-sky-400 p-2 border-opacity-50 rounded whitespace-nowrap hover:border-opacity-0 hover:bg-sky-800">
+                                    Sign In
+                                </button>
+                            </SignInButton>
+                        </div>
+                    </div>
                 </ClerkLoaded>
             </SignedOut>
         </div>
