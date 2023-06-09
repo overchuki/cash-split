@@ -12,11 +12,12 @@ datasource db {
 }
 
 model User {
-    id       Int     @id @default(autoincrement())
-    clerk_id String  @unique
-    username String?
-    name     String?
-    email    String?
+    id              Int     @id @default(autoincrement())
+    clerk_id        String  @unique
+    profile_img_url String? @db.VarChar(250)
+    username        String?
+    name            String?
+    email           String?
 
     @@index(fields: [clerk_id], name: "clerk_id_index")
 }

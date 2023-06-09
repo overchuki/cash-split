@@ -22,10 +22,10 @@ export default function Nav() {
             <div className="flex flex-row justify-start w-full md:w-11/12 lg:w-5/6 xl:w-2/3">
                 <Link href={HOME_URL} className="flex justify-center items-center hover:cursor-pointer mr-4">
                     <div className="hidden md:flex items-center justify-start max-h-full md:w-32 lg:w-48">
-                        <Image src={logo} alt="Money Split Logo" />
+                        <Image src={logo} alt="Cash Split Logo" />
                     </div>
                     <div className="flex md:hidden items-center justify-start max-h-full w-8">
-                        <Image src={logoIcon} alt="Money Split Logo" />
+                        <Image src={logoIcon} alt="Cash Split Logo" />
                     </div>
                 </Link>
                 <div className="flex flex-grow flex-row justify-evenly">

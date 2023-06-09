@@ -10,7 +10,7 @@ import { dark } from "@clerk/themes";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "Money Split",
+    title: "Cash Split",
     description: "Split money between friends on shared events/receipts",
 };
 

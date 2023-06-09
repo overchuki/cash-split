@@ -53,6 +53,7 @@ const createUser = async (user: UserJSON) => {
             username: user.username,
             email: user.email_addresses.find((ema) => ema.id === user.primary_email_address_id)?.email_address,
             name: user.first_name + " " + user.last_name,
+            profile_img_url: user.image_url,
         },
     });
     console.log("USER CREATED: ", JSON.stringify(res));
@@ -60,18 +61,30 @@ const createUser = async (user: UserJSON) => {
 
 const updateUser = async (user: UserJSON) => {
     const prisma = new PrismaClient();
-    const res = await prisma.user.update({
+
+    const existingUser = await prisma.user.findFirst({
         where: {
             clerk_id: user.id,
         },
-        data: {
-            clerk_id: user.id,
-            username: user.username,
-            email: user.email_addresses.find((ema) => ema.id === user.primary_email_address_id)?.email_address,
-            name: user.first_name + " " + user.last_name,
-        },
     });
-    console.log("USER UPDATED: ", JSON.stringify(res));
+
+    if (existingUser) {
+        const res = await prisma.user.update({
+            where: {
+                clerk_id: user.id,
+            },
+            data: {
+                clerk_id: user.id,
+                username: user.username,
+                email: user.email_addresses.find((ema) => ema.id === user.primary_email_address_id)?.email_address,
+                name: user.first_name + " " + user.last_name,
+                profile_img_url: user.image_url,
+            },
+        });
+        console.log("USER UPDATED: ", JSON.stringify(res));
+    } else {
+        createUser(user);
+    }
 };
 
 const deleteUser = async (user: DeletedObjectJSON) => {
