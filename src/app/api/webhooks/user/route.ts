@@ -6,17 +6,18 @@ import { ProcessResponseObject } from "@/app/types/general";
 import { verifySvixHeaders } from "./svix";
 
 export async function POST(request: NextRequest) {
-    const svixVerifyObj = await verifySvixHeaders(request);
+    const body = await request.json();
+
+    const svixVerifyObj = await verifySvixHeaders(request, JSON.stringify(body));
     if (svixVerifyObj.code >= 400) {
         return getHTTPResponse(svixVerifyObj.code, svixVerifyObj.msg);
     }
 
-    const processBodyObj = await processRequest(request);
+    const processBodyObj = await processRequest(body as WebhookEvent);
     return getHTTPResponse(processBodyObj.code, processBodyObj.msg);
 }
 
-const processRequest = async (request: NextRequest): Promise<ProcessResponseObject> => {
-    const body = (await request.json()) as WebhookEvent;
+const processRequest = async (body: WebhookEvent): Promise<ProcessResponseObject> => {
     try {
         switch (body.type) {
             case "user.created":
