@@ -5,3 +5,5 @@ export type receiptUser = {
     tax: number;
     percentOfTotal: number;
 };
+
+export type ProcessResponseObject = { code: number; msg: string };

@@ -12,12 +12,71 @@ datasource db {
 }
 
 model User {
-    id              Int     @id @default(autoincrement())
-    clerk_id        String  @unique
-    profile_img_url String? @db.VarChar(250)
+    id              Int           @id @default(autoincrement())
+    clerk_id        String        @unique
+    profile_img_url String?       @db.VarChar(250)
     username        String?
     name            String?
     email           String?
+    event_users     EventUser[]
+    receipt_users   ReceiptUser[]
 
     @@index(fields: [clerk_id], name: "clerk_id_index")
+}
+
+model Event {
+    id           Int         @id @default(autoincrement())
+    uuid         String      @default(uuid())
+    name         String
+    date         DateTime    @default(now())
+    total        Decimal     @db.Decimal(10, 2)
+    payment_data String?     @db.Text
+    event_users  EventUser[]
+}
+
+model EventUser {
+    id          Int         @id @default(autoincrement())
+    user        User?       @relation(references: [id], fields: [user_id])
+    user_id     Int?
+    event       Event       @relation(references: [id], fields: [event_id])
+    event_id    Int
+    owes        Decimal     @db.Decimal(10, 2)
+    event_items EventItem[]
+
+    @@index([user_id])
+    @@index([event_id])
+}
+
+model EventItem {
+    id            Int        @id @default(autoincrement())
+    amount        Decimal    @db.Decimal(10, 2)
+    title         String?
+    split_users   String?    @db.Text
+    event_user    EventUser? @relation(fields: [event_user_id], references: [id])
+    event_user_id Int?
+
+    @@index([event_user_id])
+}
+
+model Receipt {
+    id            Int           @id @default(autoincrement())
+    uuid          String        @default(uuid())
+    name          String
+    date          DateTime      @default(now())
+    total         Decimal       @db.Decimal(10, 2)
+    tax           Decimal       @db.Decimal(10, 2)
+    receipt_users ReceiptUser[]
+}
+
+model ReceiptUser {
+    id         Int      @id @default(autoincrement())
+    user       User?    @relation(references: [id], fields: [user_id])
+    user_id    Int?
+    receipt    Receipt? @relation(fields: [receipt_id], references: [id])
+    receipt_id Int?
+    total      Decimal  @db.Decimal(10, 2)
+    item_data  String?
+
+    @@index([user_id])
+    @@index([receipt_id])
 }

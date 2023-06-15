@@ -20,10 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             appearance={{
                 baseTheme: dark,
                 elements: {
-                    card: "bg-black border-2 rounded-4 border-sky-950",
+                    card: "bg-light-black border-2 rounded-4 border-sky-950",
                     footerActionLink: "text-rose-600 hover:text-rose-600",
                     formButtonPrimary: "bg-rose-800 hover:bg-rose-900",
-                    userButtonPopoverCard: "bg-zinc-950",
+                    userButtonPopoverCard: "bg-light-black",
                 },
                 variables: {
                     colorPrimary: "#38bdf8",

@@ -1,9 +1,22 @@
-export default function Loader() {
+interface props {
+    primaryColorTailwind?: `fill-${string}`;
+    backgroundColorTailwind?: `text-${string}`;
+    size?: "sm" | "md" | "lg";
+}
+
+export default function Loader({ primaryColorTailwind, backgroundColorTailwind, size = "md" }: props) {
+    const sizeStyle = {
+        sm: "w-6 h-6",
+        md: "w-8 h-8",
+        lg: "w-10 h-10",
+    };
     return (
         <div role="status" className="flex justify-center items-center">
             <svg
                 aria-hidden="true"
-                className="w-8 h-8 mr-2 animate-spin text-gray-600 fill-sky-400"
+                className={`${sizeStyle[size]} mr-2 animate-spin ${backgroundColorTailwind ?? "text-gray-600"} ${
+                    primaryColorTailwind ?? "fill-sky-400"
+                }`}
                 viewBox="0 0 100 101"
                 fill="none"
             >

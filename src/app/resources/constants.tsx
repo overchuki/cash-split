@@ -1,4 +1,3 @@
-export const HOME_STRING: string = "Home";
 export const RECEIPT_STRING: string = "Receipt";
 export const EVENT_STRING: string = "Event";
 
