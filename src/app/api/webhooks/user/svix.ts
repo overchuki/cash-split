@@ -2,8 +2,7 @@ import { ProcessResponseObject } from "@/app/types/general";
 import { NextRequest } from "next/server";
 import { Webhook, WebhookRequiredHeaders } from "svix";
 
-export const verifySvixHeaders = async (request: NextRequest): Promise<ProcessResponseObject> => {
-    const payload = JSON.stringify(await request.json());
+export const verifySvixHeaders = async (request: NextRequest, payload: string): Promise<ProcessResponseObject> => {
     const svixHeaders: WebhookRequiredHeaders = {
         "svix-id": request.headers.get("svix-id") ?? "invalid_id",
         "svix-timestamp": request.headers.get("svix-timestamp") ?? "invalid_timestamp",

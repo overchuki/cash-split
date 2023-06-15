@@ -13,7 +13,7 @@ export const createUser = async (user: UserJSON) => {
                 clerk_id: user.id,
                 username: user.username,
                 email: user.email_addresses.find((ema) => ema.id === user.primary_email_address_id)?.email_address,
-                name: user.first_name + " " + user.last_name,
+                name: getName(user.first_name, user.last_name),
                 profile_img_url: user.image_url,
             },
         });
@@ -34,7 +34,7 @@ export const updateUser = async (user: UserJSON) => {
                 clerk_id: user.id,
                 username: user.username,
                 email: user.email_addresses.find((ema) => ema.id === user.primary_email_address_id)?.email_address,
-                name: user.first_name + " " + user.last_name,
+                name: getName(user.first_name, user.last_name),
                 profile_img_url: user.image_url,
             },
         });
@@ -66,4 +66,11 @@ const findExistingUser = async (userId: string): Promise<User | null> => {
             clerk_id: userId,
         },
     });
+};
+
+const getName = (firstName: string, lastName: string) => {
+    if (firstName && lastName) {
+        return firstName + " " + lastName;
+    }
+    return null;
 };
