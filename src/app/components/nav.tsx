@@ -18,7 +18,7 @@ export default function Nav() {
     const pathname = usePathname();
 
     return (
-        <div className="flex flex-row min-w-full h-20 justify-between">
+        <div className="flex flex-row min-w-full h-20 justify-between border-b border-opacity-50 border-b-gray-700">
             <div className="flex flex-row justify-start w-full md:w-11/12 lg:w-5/6 xl:w-2/3">
                 <Link href={HOME_URL} className="flex justify-center items-center hover:cursor-pointer mr-4">
                     <div className="hidden md:flex items-center justify-start max-h-full md:w-32 lg:w-48">
