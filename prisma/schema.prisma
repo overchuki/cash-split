@@ -20,6 +20,8 @@ model User {
     email           String?
     event_users     EventUser[]
     receipt_users   ReceiptUser[]
+    event_owner     Event[]
+    receipt_owner   Receipt[]
 
     @@index(fields: [clerk_id], name: "clerk_id_index")
 }
@@ -27,11 +29,15 @@ model User {
 model Event {
     id           Int         @id @default(autoincrement())
     uuid         String      @default(uuid())
+    user         User?       @relation(references: [id], fields: [user_id])
+    user_id      Int?
     name         String
     date         DateTime    @default(now())
     total        Decimal     @db.Decimal(10, 2)
     payment_data String?     @db.Text
     event_users  EventUser[]
+
+    @@index([user_id])
 }
 
 model EventUser {
@@ -61,11 +67,15 @@ model EventItem {
 model Receipt {
     id            Int           @id @default(autoincrement())
     uuid          String        @default(uuid())
+    user          User?         @relation(references: [id], fields: [user_id])
+    user_id       Int?
     name          String
     date          DateTime      @default(now())
     total         Decimal       @db.Decimal(10, 2)
     tax           Decimal       @db.Decimal(10, 2)
     receipt_users ReceiptUser[]
+
+    @@index([user_id])
 }
 
 model ReceiptUser {
@@ -75,7 +85,7 @@ model ReceiptUser {
     receipt    Receipt? @relation(fields: [receipt_id], references: [id])
     receipt_id Int?
     total      Decimal  @db.Decimal(10, 2)
-    item_data  String?
+    item_data  String?  @db.Text
 
     @@index([user_id])
     @@index([receipt_id])

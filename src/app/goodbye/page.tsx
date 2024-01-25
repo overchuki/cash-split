@@ -1,3 +1,4 @@
+// TODO: delete but save styling for home page
 export default function Goodbye() {
     return (
         <div className="flex flex-col min-w-full flex-grow justify-center">

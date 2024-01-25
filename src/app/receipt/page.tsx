@@ -1,8 +1,20 @@
-export default function Receipt() {
-    // const [users, setUsers] = useState<receiptUser[]>([]);
-    // const [total, setTotal] = useState<number>(0);
-    // const [tax, setTax] = useState<number>(0);
+import { useUser } from "@clerk/nextjs";
+import { PrismaClient, Receipt } from "@prisma/client";
+import { useQuery } from "react-query";
 
-    // const addNewUser = (user: receiptUser): void => {};
-    return <div className="flex flex-row min-w-full">Receipt page here</div>;
+export default function Receipt() {
+    // const { isSignedIn, user, isLoaded } = useUser();
+    // const { data } = useQuery<Receipt[]>("receipts", async () => {
+    //     const prisma = new PrismaClient();
+    //     const userObj = await prisma.user.findFirst({
+    //         where: {
+    //             clerk_id: user?.id,
+    //         },
+    //     });
+    //     return await prisma.receipt.findMany({
+    //         where: {},
+    //     });
+    // });
+
+    return <div className="flex flex-row min-w-full">rece</div>;
 }
