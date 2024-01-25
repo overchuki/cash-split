@@ -7,6 +7,7 @@ export default function Goodbye() {
             </div>
             <div className="flex w-full justify-center text-2xl font-bold text-rose-800 text-center mt-8">
                 Your account has been deleted
+                test deploy
             </div>
             <div className="flex h-24"></div>
         </div>
