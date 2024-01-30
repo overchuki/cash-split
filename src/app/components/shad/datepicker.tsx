@@ -12,16 +12,17 @@ import { Dispatch, SetStateAction, useState } from "react";
 interface props {
     date: Date | undefined;
     setDate: Dispatch<SetStateAction<Date | undefined>>;
+    widthClass?: String;
     disabled?: boolean;
 }
 
-export function DatePicker({ date, setDate, disabled = false }: props) {
+export function DatePicker({ date, setDate, widthClass, disabled = false }: props) {
     return (
         <Popover>
             <PopoverTrigger asChild>
                 <Button
                     variant={"outline"}
-                    className={cn("w-[240px] justify-start text-left font-normal", !date && "text-muted-foreground")}
+                    className={cn(`${widthClass ? widthClass : "w-[240px]"} justify-start text-left font-normal`, !date && "text-muted-foreground")}
                     disabled={disabled}
                 >
                     <CalendarIcon className="mr-2 h-4 w-4" />

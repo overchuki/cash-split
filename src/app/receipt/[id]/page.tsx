@@ -1,6 +1,6 @@
 "use client";
 
-import DropdownInput from "@/app/components/dropdownInput";
+import DropdownInput from "@/app/components/shad/dropdownInput";
 import {
     DropdownMenu,
     DropdownMenuContent,

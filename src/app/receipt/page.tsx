@@ -16,5 +16,5 @@ export default function Receipt() {
     //     });
     // });
 
-    return <div className="flex flex-row min-w-full">rece</div>;
+    return <div className="flex flex-row min-w-full">receipt</div>;
 }
